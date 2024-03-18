@@ -1,0 +1,7 @@
+sexo= str(input("Você é mulher ou homem?"))
+alturapessoa = float(input("Qual é a sua altura?"))
+mensagem = ("Agora vamos consultar a nossa nutricionista e veremos qual será o seu peso ideal!!")
+homem = round((72.7*alturapessoa) - 58,2)
+mulher = round((62.1*alturapessoa) - 44.7,2)
+print(mensagem)
+print("Calculamos aqui e o seu peso ideal se você for mulher será " + str(mulher) + " e se vocẽ for homem o seu peso ideal será " + str(homem))
