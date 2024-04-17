@@ -43,6 +43,28 @@ preco = 100
 valor_imposto = round(preco * imposto, 1)
 print("O valor do imposto foi de R${:.2f}" .format(valor_imposto))
 
+#Função split
+
+texto = "lira@gmail.com"
+print(texto.split("@"))
+
+#Funçaõ splitlines
+
+texto1 = """Olá bom dia 
+Venho por meio desse e-mail informar o faturamento da loja
+Faturamento: R$4141,00.00
+"""
+print(texto1.splitlines())
+
+#Função starts with
+texto2 = "BEB414141"
+print(texto2.startswith("BEB"))
+
+#Função strip
+texto3 = "  BEV41441415  "
+print(texto3.strip())
+
+
 
 
 
