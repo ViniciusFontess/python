@@ -15,26 +15,31 @@
 
 #REMOVER ALUNO
 
-def remover(cpf):
-    i = 0
-    while i < len(ler_linha0): 
-        mensagem0 = ler_linha0[i].split("-")
-        dados = ""
-        nome = mensagem0[0]
-        cpf = mensagem0[1]
-        if cpf + "\n" != cpf_aluno:
-            dados += cadastrar_nome_aluno + " - " + cpf_aluno
-        else :
-            print("Digite um cpf que não exista na lista! ")
-    i+=1       
-    data1 = open("matricula.txt" , "w")
-    data1.write(dados)    
-    data1.close()
+"""def remover(cpf_aluno1):       
+                ler_o_arquivo = open("matricula.txt" , "r")
+                ler_linha0 = ler_o_arquivo.readlines()
+                ler_o_arquivo.close()
+                i = 0
+                dados = ""
+                while i < len(ler_linha0): 
+                    mensagem0 = ler_linha0[i].split("-")
+                    cpf = mensagem0[1]
+                    if cpf + "\n" != cpf_aluno:
+                        dados += cadastrar_nome_aluno + " - " + cpf_aluno
+                        i+=1 
+                    else: 
+                        ("O CPF já existe no sistema, tente novamente")
+                        continua = False          
+                
+                data1 = open("matricula.txt" , "w")
+                data1.write(dados)    
+                data1.close()
+                adicionar_no_arquivo.close()
+                data1 = open("matricula.txt" , "r")
+                ler_linha = data1.readlines()
+                data1.close()"""
 
 #EDITAR ALUNO 
-"""def editar_aluno"""
-
-
 
 
 def borda():
@@ -71,27 +76,51 @@ while continua:
             cadastrar_nome_aluno = input()
             print("Digite o CPF do aluno: ")
             cpf_aluno = str(input())   
-            data = open("matricula.txt" , "a") 
-            mensagem = cadastrar_nome_aluno + " - " + str(cpf_aluno)
-            data.write(mensagem)
-            data.close()
-            data1 = open("matricula.txt" , "r")
-            ler_linha = data1.readlines()
-            data1.close()
+            def adicionar(cadastrar_nome_aluno,cpf_aluno):
+
+                ler = open("matricula.txt" , "r")
+                ler_linha = ler.readlines()
+                ler.close()
+
+                cpf_vetor = []
+                adicionar_linhas = []
+
+                i = 0
+                while i < len(ler_linha):
+                    adicionar_linhas.append(ler_linha[i].split(" - "))
+                    cpf_vetor.append(adicionar_linhas[i][1])
+                    i+=1
+
+                i = 0
+                existe = False
+                while i < len(cpf_vetor):
+                    if cpf_vetor[i] == cpf_aluno:
+                        existe = True
+                    i+=1    
+ 
+                if not existe :
+                    apendar = open("matricula" , "a")    
+                    escrever = cadastrar_nome_aluno + " - " + cpf_aluno
+                    apendar.write(escrever)
+                    apendar.close()
+
             #Enumerar os alunos da lista
-            i = 0
-            while i < len(ler_linha):
-                mensagem = ler_linha[i].split("-")
-                print(str(i) + "- " + str(mensagem[0] + "- " + cpf_aluno))
+            enumerar = open("matricula.txt" , "r")
+            enumerar1 = enumerar.readlines()
+            enumerar.close()
+            
+            while i < len(enumerar1):
+                mensagem = enumerar1[i].split("-")
+                print("O aluno foi cadastrado na lista!! " "\n" + str(i) + " - " + str(mensagem[0] + " - " + cpf_aluno))
                 i+=1
 
-            #Editar aluno, Nome e CPF
+        #Remover aluno
 
         if o_que_deseja_fazer2 == 3:
             print("Você deseja remover qual aluno? Digite o índice: ")
             data2 = open("matricula.txt" , "r")
-            printar_usuario = data2.write()
-            data2.close
+            printar_usuario = data2.readlines()
+            data2.close()
             print(printar_usuario)
             indice = int(input())
             print(printar_usuario[indice])
@@ -100,11 +129,24 @@ while continua:
             print("2- NÃO")
             sim_nao = input()
             if sim_nao == "SIM":
-                
-
-                
-                chamar = remover()
-        
+                def remover(cpf_aluno1):       
+                    ler_o_arquivo = open("matricula.txt" , "r")
+                    ler_linha0 = ler_o_arquivo.readlines()
+                    ler_o_arquivo.close()
+                    i = 0
+                    dados = ""
+                    while i < len(ler_linha0): 
+                        mensagem0 = ler_linha0[i].split(" - ")
+                        cpf = mensagem0[1]
+                        if cpf + "\n" != cpf_aluno:
+                            dados += cadastrar_nome_aluno + " - " + cpf_aluno
+                            i+=1 
+                    else: 
+                        ("O CPF já existe no sistema, tente novamente")
+                        continua = False          
+                    data1 = open("matricula.txt" , "w")
+                    data1.write(dados)    
+                    data1.close()
 
         if o_que_deseja_fazer2 == 4:
             lista_alunos = open("matricula.txt" , "r")
