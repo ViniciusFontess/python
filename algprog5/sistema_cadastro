@@ -1,0 +1,163 @@
+continua = True
+while continua:
+    try:
+        print("1- Cadastrar uma categoria de orçamento")
+        print("2- Cadastrar uma despesa")
+        print("3- Vincular uma despesa a uma categoria")
+        print("4- Relatório ")
+        o_que_deseja_fazer = int(input())
+    except EOFError:
+        continua = False    
+
+    if o_que_deseja_fazer == 1:
+        print("Escreva a categoria de orçamento de sua escolha: ")
+        categoria_de_orcamento = input()
+        adicionar_categoria = open("categorias.txt" , "a")
+        adicionar_categoria.write(categoria_de_orcamento + "\n")
+        adicionar_categoria.close()
+        print("Sua categoria foi cadastrada com sucesso!! ")
+        continua = False
+
+    if o_que_deseja_fazer == 2:
+        print("Cadastre a sua despesa: **Deve conter XXXX,00 - data (dia/mes/ano)** ") ## Exemplo: R$ 13141,50 - 20/13/2022
+        despesa = input()
+        adicionar_despesa = open("despesas.txt" , "a")
+        adicionar_despesa.write(despesa + "\n")
+        adicionar_despesa.close()
+        print("Sua despesa foi cadastrada com sucesso!! ")
+        continua = False
+
+    if o_que_deseja_fazer == 3:
+        print("Qual despesa você quer vincular a uma categoria? ")
+        print("Digite a despesa: ")
+        vinculacao_despesa = input()
+        print("Digite a categoria: ")
+        vinculacao_categoria = input()
+        abrir_despesa = open("despesas.txt" , "r")
+        ler_despesa = abrir_despesa.readlines()
+        abrir_despesa.close()
+        i = 0
+        passei = False
+        while not passei:
+            while i < len(ler_despesa):  ## VERIFICAR SE EXISTE A DESPESA NO TXT
+                ler_despesa[i] = ler_despesa[i].strip()
+                vinculacao_despesa = vinculacao_despesa.strip()
+                print(ler_despesa)
+                print(vinculacao_despesa)
+                tirar_vetor = ler_despesa[i]
+                print(tirar_vetor)
+                if vinculacao_despesa == tirar_vetor:
+                    passei = True
+                i+=1 
+            if not passei:
+                print("A despesa não foi encontrada digite corretamente!") 
+                passei = True
+                continua = False   
+        if passei == True:        
+            abrir_categoria = open("categorias.txt" , "r")
+            ler_categoria = abrir_categoria.readlines()
+            abrir_categoria.close()
+            passei2 = False
+            while not passei2:
+                while i < len(ler_categoria):  ## VERIFICAR SE EXISTE A CATEGORIA NO TXT
+                    ler_categoria[i] = ler_categoria[i].strip()
+                    vinculacao_categoria = vinculacao_categoria.strip()
+                    vetor_categoria = ler_categoria[i]
+                    if vinculacao_categoria == vetor_categoria:
+                        passei2 == True
+                        i+=1    
+                if passei2 == False:
+                    print("A categoria não foi encontrada digite corretamente!")
+                    passei2 = True
+                    continua = False  
+            if passei2 == True:     
+                vincular_agora = open("vincular.txt" , "a") ## VINCULAÇÃO!! 
+                mensagem = vinculacao_categoria + " ==> " + vinculacao_despesa
+                vincular_agora.write(mensagem + "\n")
+                vincular_agora.close()
+                print("Sua vinculação foi concluída com sucesso!!")
+                continua = False
+
+        ## RELATÓRIO!!
+
+    if o_que_deseja_fazer == 4:
+        print("Digite o ano que deseja analisar os gastos: ")
+        ano_de_gastos = input()
+        ano_abrir = open("vincular.txt" , "r")
+        ler_ano = ano_abrir.readlines
+        ano_abrir.close()
+        i = 0 
+        soma_de_valores_mes1 = 0
+        soma_de_valores_mes2 = 0
+        soma_de_valores_mes3 = 0
+        soma_de_valores_mes4 =  0
+        soma_de_valores_mes5 = 0
+        soma_de_valores_mes6 = 0
+        soma_de_valores_mes7 = 0
+        soma_de_valores_mes8 = 0
+        soma_de_valores_mes9 = 0
+        soma_de_valores_mes10 = 0
+        soma_de_valores_mes11 = 0
+        soma_de_valores_mes12 = 0
+        while i < len(ler_ano):
+            separar_datas = ler_ano[i].split("/")
+            if separar_datas[2] == ano_de_gastos:
+                separar_valor = ler_ano[i].split("-") # uber ==> XXXX,00 - 20/13/2022
+                separar_valor[0] = float(separar_valor) #Ele seria uma string XXXX e assim não daria para somar
+                separar_mes = ler_ano[i].split("/")  
+                if separar_mes[1] == "01":
+                        soma_de_valores_mes1 += separar_valor[0]
+                if separar_mes[1] == "02":
+                        soma_de_valores_mes2 += separar_valor[0]
+                if separar_mes[1] == "03":
+                        soma_de_valores_mes3 += separar_valor[0]
+                if separar_mes[1] == "04":
+                        soma_de_valores_mes4 += separar_valor[0]
+                if separar_mes[1] == "05":
+                        soma_de_valores_mes5 += separar_valor[0]
+                if separar_mes[1] == "06":
+                        soma_de_valores_mes6 += separar_valor[0]
+                if separar_mes[1] == "07":
+                        soma_de_valores_mes7 += separar_valor[0]
+                if separar_mes[1] == "08":
+                        soma_de_valores_mes8 += separar_valor[0]
+                if separar_mes[1] == "09":
+                        soma_de_valores_mes9 += separar_valor[0]
+                if separar_mes[1] == "10":
+                        soma_de_valores_mes10 += separar_valor[0]
+                if separar_mes[1] =="11":
+                        soma_de_valores_mes11 += separar_valor[0]
+                if separar_mes[1] == "12":
+                        soma_de_valores_mes12 += separar_valor[0]   
+                relatorio = open("relatorio.txt" , "a")
+                mensagem1 = ("O gasto total do mês 01 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes1))
+                mensagem2 = ("O gasto total do mês 02 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes2))
+                mensagem3 = ("O gasto total do mês 03 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes3))
+                mensagem4 = ("O gasto total do mês 04 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes4))
+                mensagem5 = ("O gasto total do mês 05 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes5))
+                mensagem6 = ("O gasto total do mês 06 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes6))
+                mensagem7 = ("O gasto total do mês 07 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes7))
+                mensagem8 = ("O gasto total do mês 08 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes8))
+                mensagem9 = ("O gasto total do mês 09 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes9))
+                mensagem10 = ("O gasto total do mês 10 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes10))
+                mensagem11 = ("O gasto total do mês 11 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes11))
+                mensagem12 = ("O gasto total do mês 12 no ano de " + str(ano_de_gastos) + " foi de " + str(soma_de_valores_mes12))
+                relatorio.write(mensagem1)
+                relatorio.write(mensagem2)
+                relatorio.write(mensagem3)
+                relatorio.write(mensagem4)
+                relatorio.write(mensagem5)
+                relatorio.write(mensagem6)
+                relatorio.write(mensagem7)
+                relatorio.write(mensagem8)
+                relatorio.write(mensagem9)
+                relatorio.write(mensagem10)
+                relatorio.write(mensagem11)
+                relatorio.write(mensagem12)
+                relatorio.close()
+                print("Seu relatório com todos os meses de " + str(ano_de_gastos) + " foi feito com sucesso")
+                continua = False
+
+            else:
+                print("O ano digitado não existe no sistema, digite novamente! ")
+                continua = False
