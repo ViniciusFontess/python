@@ -29,7 +29,27 @@ if produtos in produtos1 :
 else :
     print('{} não existe no estoque. ' .format(produtos))    
 
+#Crie um código que recalcule o valor do livro da sua lista  de produtos e ajuste na tabela
 
+produtos4 = ['computador', 'livro', 'tablet', 'celular', 'tv', 'ar condicionado', 'alexa', 'máquina de café', 'kindle']
+
+produtos_ecommerce = [
+[1000, 2500]
+[50000, 40]
+[7000, 1200]
+[20000, 1500]
+[5800, 1300]
+[7200, 2500]
+[200, 800]
+[3300, 700]
+[1900, 400]
+
+]
+
+if 'livro' in produtos4:
+    i_livro = produtos4.index('livro')
+    produtos_ecommerce[i_livro][1] = produtos_ecommerce[i_livro][1]*1.1
+    print(produtos_ecommerce[i_livro][1])
 
 
 
