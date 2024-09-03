@@ -1,7 +1,7 @@
 A, B = input().split(" ")
 
-vetor_a = [int(x) for x in A]
-vetor_b = [int(x) for x in B]
+vetor_a = [(x) for x in A]
+vetor_b = [(x) for x in B]
 
 
 if vetor_a[0] == 0 and vetor_b[0] == 0:
@@ -30,6 +30,7 @@ else:
            numero_a = vetor_a[i]
            numero_a += ""
            i+=1
+    i = 0       
     while i < tamanho_b - 1: 
            numero_b = vetor_b[i]
            numero_b += ""
@@ -42,10 +43,7 @@ numero_b = int(numero_b)
 contador_posicoes = [0]*9
 i = 0
 
-while i < len(contador_posicoes):
-      contador_posicoes[i] = int(contador_posicoes[i])
-      i+=1
-print(contador_posicoes)
+
 
 if numero_a < numero_b:
        aux = numero_a
